@@ -1,20 +1,20 @@
 {
-  "Group": "dev.hytalemodding",
-  "Name": "ExamplePlugin",
+  "Group": "com.pinapelz",
+  "Name": "ATTR-Hytale",
   "Version": "1.0.0",
-  "Description": "Description of your plugin",
+  "Description": "ATTR WIP",
   "Authors": [
     {
-      "Name": "Your Name",
-      "Email": "your.email@example.com",
-      "Url": "https://your-website.com"
+      "Name": "pinapelz",
+      "Email": "yukais@pinapelz.com",
+      "Url": "https://pinapelz.com"
     }
   ],
-  "Website": "https://your-plugin-website.com",
+  "Website": "https://pinapelz.com",
   "ServerVersion": "*",
   "Dependencies": {},
   "OptionalDependencies": {},
   "DisabledByDefault": false,
   "IncludesAssetPack": false,
-  "Main": "dev.hytalemodding.ExamplePlugin"
+  "Main": "com.pinapelz.ATTRHytale"
 }
