@@ -8,16 +8,16 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class PingATTR extends AbstractCommand {
+public class PingTRW extends AbstractCommand {
 
-    public PingATTR(String name, String description) {
+    public PingTRW(String name, String description) {
         super(name, description);
     }
 
     @Nullable
     @Override
     protected CompletableFuture<Void> execute(@Nonnull CommandContext context) {
-        context.sendMessage(Message.raw("yo what up. I'm running rn"));
+        context.sendMessage(Message.raw("[TRW] Version -1. Plugin is loaded"));
         return CompletableFuture.completedFuture(null);
     }
 

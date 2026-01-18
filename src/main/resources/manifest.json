@@ -1,8 +1,8 @@
 {
   "Group": "com.pinapelz",
-  "Name": "ATTR-Hytale",
+  "Name": "TRW-Hytale",
   "Version": "1.0.0",
-  "Description": "ATTR WIP",
+  "Description": "TRW for Hytale",
   "Authors": [
     {
       "Name": "pinapelz",
@@ -16,5 +16,5 @@
   "OptionalDependencies": {},
   "DisabledByDefault": false,
   "IncludesAssetPack": false,
-  "Main": "com.pinapelz.ATTRHytale"
+  "Main": "com.pinapelz.TRWHytale"
 }

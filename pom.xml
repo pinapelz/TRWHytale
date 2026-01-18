@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pinapelz</groupId>
-    <artifactId>ATTR-Hytale</artifactId>
+    <artifactId>TRWHytale</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -29,6 +29,13 @@
             <version>1.0.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/HytaleServer.jar</systemPath>
+        </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
