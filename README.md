@@ -8,3 +8,4 @@ A random plugin for personal use. Not useful.
 ## Send payload to Discord Webhook on server startup and sever shutdown
 - Expects resources/discord/discord.json
 - `startup` and `shutdown` expect webhook JSON payloads
+S
