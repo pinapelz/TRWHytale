@@ -49,7 +49,7 @@ public class TRWAppearGUI extends InteractiveCustomUIPage<Void> {
             UICommandBuilder update = new UICommandBuilder();
             ++this.totalFramesProcessed;
 
-            if (this.totalFramesProcessed >= 12) {
+            if (this.totalFramesProcessed >= 13) {
                 this.scheduler.shutdownNow();
                 HytaleServer.SCHEDULED_EXECUTOR.schedule(this::safeClose, 50L, TimeUnit.MILLISECONDS);
                 return;
@@ -58,7 +58,7 @@ public class TRWAppearGUI extends InteractiveCustomUIPage<Void> {
             update.set("#F" + this.currentFrame + ".Visible", false);
             ++this.currentFrame;
 
-            if (this.currentFrame <= 12) {
+            if (this.currentFrame <= 13) {
                 update.set("#F" + this.currentFrame + ".Visible", true);
             }
 

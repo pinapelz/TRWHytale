@@ -17,7 +17,7 @@ public class PingTRW extends AbstractCommand {
     @Nullable
     @Override
     protected CompletableFuture<Void> execute(@Nonnull CommandContext context) {
-        context.sendMessage(Message.raw("[TRW] Version -1. Plugin is loaded"));
+        context.sendMessage(Message.raw("[TRW] Version 0.2 - Plugin is loaded"));
         return CompletableFuture.completedFuture(null);
     }
 

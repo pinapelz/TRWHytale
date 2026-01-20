@@ -1,0 +1,16 @@
+Group #MainPage {
+    Anchor: (Full: 0);
+    Group #F1  { Visible: true; Background: PatchStyle(TexturePath: "../Common/TRW/frame_001.png"); Anchor: (Full: 0); }
+    Group #F2  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_002.png"); Anchor: (Full: 0); }
+    Group #F3  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_003.png"); Anchor: (Full: 0); }
+    Group #F4  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_004.png"); Anchor: (Full: 0); }
+    Group #F5  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_005.png"); Anchor: (Full: 0); }
+    Group #F6  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_006.png"); Anchor: (Full: 0); }
+    Group #F7  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_007.png"); Anchor: (Full: 0); }
+    Group #F8  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_008.png"); Anchor: (Full: 0); }
+    Group #F9  { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_009.png"); Anchor: (Full: 0); }
+    Group #F10 { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_010.png"); Anchor: (Full: 0); }
+    Group #F11 { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_011.png"); Anchor: (Full: 0); }
+    Group #F12 { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_012.png"); Anchor: (Full: 0); }
+    Group #F13 { Visible: false; Background: PatchStyle(TexturePath: "../Common/TRW/frame_013.png"); Anchor: (Full: 0); }
+}

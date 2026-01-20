@@ -18,8 +18,8 @@ public class TRWHytale extends JavaPlugin {
 
     @Override
     protected void setup() {
-        this.getCommandRegistry().registerCommand(new PingTRW("trw", "TRW"));
-        this.getCommandRegistry().registerCommand(new Appear());
+        this.getCommandRegistry().registerCommand(new PingTRW("trw", "TRW Version and Info"));
+        this.getCommandRegistry().registerCommand(new Appear("trw-appear", "Send Wonhee to jumpscare someone"));
         getEventRegistry().register(
                 AllWorldsLoadedEvent.class,
                 StartUPEvent::onServerReady

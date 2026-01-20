@@ -25,9 +25,9 @@ import java.util.concurrent.CompletableFuture;
 public class Appear extends AbstractAsyncCommand {
     private final RequiredArg<PlayerRef> targetArgument;
 
-    public Appear() {
-        super("appear", "Make TRW show up for a player");
-        this.setPermissionGroups(new String[]{"OP"});
+    public Appear(String name, String description) {
+        super(name, description);
+        this.setPermissionGroups("OP");
         this.targetArgument = this.withRequiredArg("player", "The player who shall meet TRW", ArgTypes.PLAYER_REF);
     }
 
@@ -40,13 +40,13 @@ public class Appear extends AbstractAsyncCommand {
             Ref<EntityStore> entityRef = targetRef.getReference();
             if (entityRef != null && entityRef.isValid()) {
                 Store<EntityStore> store = entityRef.getStore();
-                World world = ((EntityStore) store.getExternalData()).getWorld();
+                World world = store.getExternalData().getWorld();
 
                 return CompletableFuture.runAsync(() -> {
-                    Player playerComponent = (Player) store.getComponent(entityRef, Player.getComponentType());
+                    Player playerComponent = store.getComponent(entityRef, Player.getComponentType());
                     if (playerComponent != null) {
                         if (sender != playerComponent) {
-                            sender.sendMessage(Message.raw("Sending jumpscare to " + targetRef.getUsername()).color(Color.GREEN));
+                            sender.sendMessage(Message.raw("Sending a jumpscare to " + targetRef.getUsername()).color(Color.GREEN));
                         }
 
                         playSound(targetRef, "SFX_TRWSound");
