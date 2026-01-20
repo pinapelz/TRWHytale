@@ -67,6 +67,6 @@ public class Appear extends AbstractAsyncCommand {
 
     @Nonnull
     public Message getUsageShort(@Nonnull CommandSender sender, boolean fullyQualify) {
-        return Message.raw("/appear ").insert(Message.raw("<player>").color("#C1E0FF"));
+        return Message.raw("/trw-appear ").insert(Message.raw("<player>").color("#C1E0FF"));
     }
 }
