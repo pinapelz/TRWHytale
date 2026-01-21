@@ -6,7 +6,7 @@ import com.hypixel.hytale.server.core.universe.world.events.AllWorldsLoadedEvent
 import com.pinapelz.commands.Appear;
 import com.pinapelz.commands.PingTRW;
 import com.pinapelz.events.ShutdownEvent;
-import com.pinapelz.events.StartUPEvent;
+import com.pinapelz.events.StartUpEvent;
 
 import javax.annotation.Nonnull;
 
@@ -19,10 +19,10 @@ public class TRWHytale extends JavaPlugin {
     @Override
     protected void setup() {
         this.getCommandRegistry().registerCommand(new PingTRW("trw", "TRW Version and Info"));
-        this.getCommandRegistry().registerCommand(new Appear("trw-appear", "Send Wonhee to jumpscare someone"));
+        this.getCommandRegistry().registerCommand(new Appear("trw-appear", "Send a jumpscare to someone"));
         getEventRegistry().register(
                 AllWorldsLoadedEvent.class,
-                StartUPEvent::onServerReady
+                StartUpEvent::onServerReady
         );
     }
 
