@@ -15,5 +15,6 @@ A random plugin for personal use. Not useful.
 3. Obtain some `.ogg` audio file and place it in `src/main/resources/Common/Sounds`, name it `twr.ogg`
 
 - Run the jumpscare via command `/trw-appear <playername>`
+- The jumpscare has a 1 in 100 chance to occur when holding a tool and sending an interaction packet (even if interacting with nothing)
 
 Heavily based off of: https://www.curseforge.com/hytale/mods/chance-for-withered-foxy-jumpscare-every-second

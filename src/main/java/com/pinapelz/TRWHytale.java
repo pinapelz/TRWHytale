@@ -1,5 +1,6 @@
 package com.pinapelz;
 
+import com.hypixel.hytale.server.core.io.adapter.PacketAdapters;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.world.events.AllWorldsLoadedEvent;
@@ -24,10 +25,11 @@ public class TRWHytale extends JavaPlugin {
                 AllWorldsLoadedEvent.class,
                 StartUpEvent::onServerReady
         );
+        PacketAdapters.registerInbound(new InteractionPacketListener());
     }
 
-        @Override
-        public void shutdown() {
-            ShutdownEvent.onShutdown();
-        }
+    @Override
+    public void shutdown() {
+        ShutdownEvent.onShutdown();
+    }
 }
