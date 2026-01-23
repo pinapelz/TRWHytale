@@ -13,8 +13,11 @@ def main():
         if "trw" in mod_file_name:
             continue
         if "ymmersive-melodies" in mod_file_name:
-            print("Found ymmersive-melodies mod, patching...")
+            print("Found ymmersive-melodies mod -> Swapping default songs")
             patches.ymmersive_melodies_patch_new_default_songs(mod_path)
+        elif "SNIP3_FoodPack" in mod_file_name and mod_file_name.endswith(".zip"):
+            print("Found SNIP3'S Food Pack -> Cleaning")
+            patches.snip3_foodpack_apply_patch(mod_path)
         else:
             print(f"[WARNING] {mod_file_name} not recognized")
 
