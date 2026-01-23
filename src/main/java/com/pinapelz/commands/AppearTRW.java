@@ -22,10 +22,10 @@ import javax.annotation.Nonnull;
 import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
 
-public class Appear extends AbstractAsyncCommand {
+public class AppearTRW extends AbstractAsyncCommand {
     private final RequiredArg<PlayerRef> targetArgument;
 
-    public Appear(String name, String description) {
+    public AppearTRW(String name, String description) {
         super(name, description);
         this.setPermissionGroups("OP");
         this.targetArgument = this.withRequiredArg("player", "The player who shall meet TRW", ArgTypes.PLAYER_REF);
