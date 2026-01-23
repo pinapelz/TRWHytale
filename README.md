@@ -1,5 +1,5 @@
 # TRWHytale
-A random plugin for personal use. Not useful.
+A random plugin and collection of mods (modpack?) that are not useful.
 
 >You must compile this plugin on your own since config files are built into the JAR itself
 >
@@ -18,3 +18,11 @@ A random plugin for personal use. Not useful.
 - The jumpscare has a 1 in 100 chance to occur when holding a tool and sending an interaction packet (even if interacting with nothing)
 
 Heavily based off of: https://www.curseforge.com/hytale/mods/chance-for-withered-foxy-jumpscare-every-second
+
+# Mods
+The mods below need to be patched via the Python script. These can be mixed and matched, download the mod and place it into a `mods` folder in the root directory.
+
+Run `uv sync` to pull any potential dependencies.
+
+## [Ymmersive Melodies](https://www.curseforge.com/hytale/mods/ymmersive-melodies/download)
+- Removed the default serverside songs and added some "special" ones
