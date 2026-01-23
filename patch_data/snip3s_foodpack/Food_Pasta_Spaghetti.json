@@ -33,10 +33,10 @@
       "Interactions": [
         {
           "Type": "ApplyEffect",
-          "EffectId": "Food_Instant_Heal_T3"
+          "EffectId": "Food_Instant_Heal_T4"
         },
-        "HealthRegen_TierCheck_T3",
-        "FruitVeggie_TierCheck_T3"
+        "HealthRegen_TierCheck_T4",
+        "FruitVeggie_TierCheck_T4"
       ]
     }
   },
@@ -59,7 +59,11 @@
         "ItemId": "Plant_Crop_Tomato_Item"
       },
       {
-        "ItemId": "Food_Pasta"
+        "ItemId": "Ingredient_Raw_Pasta"
+      },
+      {
+        "ItemId": "Ingredient_Bar_Gold",
+        "Quantity": 4
       }
     ],
     "Output": [

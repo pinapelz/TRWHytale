@@ -58,12 +58,16 @@ def ymmersive_melodies_patch_new_default_songs(jar_path: str):
 
 def snip3_foodpack_apply_patch(zip_path: str):
     kept_icons = ["Food_Fried_Potato.png", "Food_Pasta.png", "Food_Pizza_Cheese.png", "Food_Raw_Pasta.png", "Ingredient_Raw_Fries_Potato.png", "Ingredient_Raw_Pasta.png"]
-    kept_item_data = ["Food_Fried_Potato.json", "Food_Pasta.json","Food_Pasta_Bologonese.json", "Food_Pizza_Cheese.json", "Ingredient_Raw_Fries_Potato.json", "Ingredient_Raw_Pasta.json"]
+    kept_item_data = ["Food_Fried_Potato.json", "Food_Pizza_Cheese.json", "Ingredient_Raw_Fries_Potato.json", "Ingredient_Raw_Pasta.json"]
     kept_models = ["Carbonara.png", "Cooked_Pasta.blockymodel", "Fried_Patato.blockymodel", "Fried_Potato.png", "Fries_Texture.png", "Pizza.blockymodel", "Pizza_Texture.png", "Potato_Fries.blockymodel", "Raw_Pasta.blockymodel", "Raw_Pasta_Texture.png"]
+    kept_interactions = ["HealthRegen_TierCheck_T4.json","FruitVeggie_TierCheck_T4.json"]
+    kept_effects = ["Food_Instant_Heal_T4.json", "FruitVeggie_Buff_T4.json", "HealthRegen_Buff_T4.json"]
     prefixes = {
         "Common/Icons/ItemsGenerated/": set(kept_icons),
         "Server/Item/Items/": set(kept_item_data),
         "Common/Items/Consumables/Food/": set(kept_models),
+        "Server/Entity/Effects/": set(kept_effects),
+        "Server/Item/Interactions/": set(kept_interactions)
     }
     keep_paths = set(["manifest.json"])
     for prefix, names in prefixes.items():
@@ -103,6 +107,14 @@ def snip3_foodpack_apply_patch(zip_path: str):
         pasta_json_src = os.path.join('patch_data', 'snip3s_foodpack', 'Food_Pasta_Spaghetti.json')
         dest_dir = os.path.join(temp_dir, 'Server', 'Item', 'Items')
         dest_path = os.path.join(dest_dir, 'Food_Pasta_Spaghetti.json')
+        manifest_json = load_json_file(os.path.join(temp_dir, 'manifest.json'))
+        manifest_json["IncludesAssetPack"] = True
+        dump_json_file(manifest_json, os.path.join(temp_dir, 'manifest.json'))
+        t4_heal_file = os.path.join(temp_dir, 'Server', 'Entity', 'Effects', "Food_Instant_Heal_T4.json")
+        t4_insta_heal_json = load_json_file(t4_heal_file)
+        t4_insta_heal_json["StatModifiers"]["Health"] = 40
+        dump_json_file(t4_insta_heal_json, t4_heal_file)
+
         try:
             if os.path.exists(pasta_json_src):
                 os.makedirs(dest_dir, exist_ok=True)
