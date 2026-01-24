@@ -3,16 +3,16 @@ package com.pinapelz.gui;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.protocol.SoundCategory;
+import com.hypixel.hytale.protocol.SoundEvent;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.Page;
 import com.hypixel.hytale.server.core.HytaleServer;
-import com.hypixel.hytale.server.core.asset.type.soundevent.config.SoundEvent;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCustomUIPage;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.hypixel.hytale.server.core.universe.world.SoundUtil;
+import com.pinapelz.util.SoundHelper;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
@@ -39,10 +39,7 @@ public class TRWAppearGUI extends InteractiveCustomUIPage<Void> {
     private void animate() {
         try {
             if (!this.soundPlayed) {
-                int soundEventIndex = SoundEvent.getAssetMap().getIndex("SFX_TRWSound");
-                if (soundEventIndex != 0) {
-                    SoundUtil.playSoundEvent2dToPlayer(this.playerRef, soundEventIndex, SoundCategory.UI, 1.0F, 1.0F);
-                }
+                SoundHelper.playSound(this.playerRef, "SFX_TRWSound", SoundCategory.UI, 1.0f, 1.0f);
                 this.soundPlayed = true;
             }
 

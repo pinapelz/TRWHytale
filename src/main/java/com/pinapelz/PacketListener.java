@@ -19,7 +19,7 @@ import com.pinapelz.gui.TRWAppearGUI;
 
 import java.util.Random;
 
-public class InteractionPacketListener implements PacketWatcher {
+public class PacketListener implements PacketWatcher {
     @Override
     public void accept(PacketHandler packetHandler, Packet packet) {
         if (packet.getId() != 290) {
@@ -43,7 +43,7 @@ public class InteractionPacketListener implements PacketWatcher {
             Random random = new Random();
             int attempt = random.nextInt(100)+1;
             if(attempt != 67){
-                return; // u got lucky
+                return; // u got lucky this time...
             }
             Universe universe = Universe.get();
             PlayerRef playerRef = universe.getPlayer(playerAuth.getUuid());
@@ -74,4 +74,5 @@ public class InteractionPacketListener implements PacketWatcher {
             e.printStackTrace();
         }
     }
+
 }

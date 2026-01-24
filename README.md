@@ -26,3 +26,7 @@ Run `uv sync` to pull any potential dependencies.
 
 ## [Ymmersive Melodies](https://www.curseforge.com/hytale/mods/ymmersive-melodies/download)
 - Removed the default serverside songs and added some "special" ones
+
+## [SNIP3'S Food Pack](https://www.curseforge.com/hytale/mods/snip3s-food-pack)
+- Removed some of the food items, kept fries and pizza
+- Remap pastas into Spaghetti, and buffed effects. Added on-craft event noise

@@ -41,7 +41,7 @@
     }
   },
   "Recipe": {
-    "TimeSeconds": 1,
+    "TimeSeconds": 0,
     "Input": [
       {
         "ResourceTypeId": "Meats",
