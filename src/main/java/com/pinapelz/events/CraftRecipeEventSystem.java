@@ -12,6 +12,8 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import javax.annotation.Nullable;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.server.core.event.events.ecs.CraftRecipeEvent.Post;
+import com.pinapelz.TRWHytale;
+import com.pinapelz.components.PlayerData;
 import com.pinapelz.util.SoundHelper;
 
 public class CraftRecipeEventSystem extends EntityEventSystem<EntityStore, Post> {
@@ -24,9 +26,16 @@ public class CraftRecipeEventSystem extends EntityEventSystem<EntityStore, Post>
         if (!recipeId.isEmpty()) {
             Ref<EntityStore> ref = archetypeChunk.getReferenceTo(index);
             PlayerRef playerRef = store.getComponent(ref, PlayerRef.getComponentType());
-            EntityStore worldEntityStore = Universe.get().getWorld(playerRef.getWorldUuid()).getEntityStore();
             if(recipeId.startsWith("Food_Pasta_Spaghetti_Recipe")){
-                SoundHelper.playSound(playerRef, "SFX_TRWPasta", SoundCategory.UI, 0.8f, 1.0f);
+                Universe.get().getWorld(playerRef.getWorldUuid()).execute(() -> {
+                    PlayerData playerData = store.ensureAndGetComponent(ref, TRWHytale.INSTANCE.getPlayerDataComponent());
+                    if(!playerData.isUISoundCooldown()){
+                        playerData.setNewUISoundCooldown(3000L); // eat it up, eat it eat it
+                    } else {
+                        return; // Sound is on cooldown, do not play it again
+                    }
+                    SoundHelper.playSound(playerRef, "SFX_TRWPasta", SoundCategory.UI, 0.8f, 1.0f);
+                });
             }
             System.out.println("Crafted recipe: " + recipeId + " by player: " + (playerRef != null ? playerRef.getUsername() : "Unknown"));
         }
