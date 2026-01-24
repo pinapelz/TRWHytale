@@ -3,6 +3,18 @@ import os
 
 def get_all_mod_sources() -> list:
     os.makedirs("mods", exist_ok=True)
+    output_dir = "mods/patched"
+    os.makedirs(output_dir, exist_ok=True)
+    import shutil
+    for entry in os.listdir(output_dir):
+        path = os.path.join(output_dir, entry)
+        try:
+            if os.path.isfile(path) or os.path.islink(path):
+                os.remove(path)
+            elif os.path.isdir(path):
+                shutil.rmtree(path)
+        except Exception:
+            pass
     files = [f for f in os.listdir("mods") if os.path.isfile(os.path.join("mods", f))]
     return files
 

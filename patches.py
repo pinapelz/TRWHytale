@@ -46,15 +46,9 @@ def ymmersive_melodies_patch_new_default_songs(jar_path: str):
                         temp_jar.writestr(arcname, data)
     dirn = os.path.dirname(jar_path)
     base = os.path.splitext(os.path.basename(jar_path))[0]
-    new_name = base + '-trw.jar'
+    new_name = "patched/" + base + '-trw.jar'
     new_path = os.path.join(dirn, new_name) if dirn else new_name
     os.replace(temp_path, new_path)
-    try:
-        if os.path.exists(jar_path):
-            if os.path.abspath(jar_path) != os.path.abspath(new_path):
-                os.remove(jar_path)
-    except OSError:
-        pass
 
 def snip3_foodpack_apply_patch(zip_path: str):
     kept_icons = ["Food_Fried_Potato.png", "Food_Pasta.png", "Food_Pizza_Cheese.png", "Food_Raw_Pasta.png", "Ingredient_Raw_Fries_Potato.png", "Ingredient_Raw_Pasta.png"]
@@ -132,7 +126,7 @@ def snip3_foodpack_apply_patch(zip_path: str):
                     pass
         dirn = os.path.dirname(zip_path)
         base = os.path.splitext(os.path.basename(zip_path))[0]
-        new_name = base + '-trw.zip'
+        new_name = "patched/" + base + '-trw.zip'
         new_path = os.path.join(dirn, new_name) if dirn else new_name
         with zipfile.ZipFile(new_path, 'w', compression=zipfile.ZIP_DEFLATED) as out_zip:
             for root, _, files in os.walk(temp_dir):
