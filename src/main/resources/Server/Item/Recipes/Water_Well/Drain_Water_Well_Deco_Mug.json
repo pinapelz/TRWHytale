@@ -1,0 +1,20 @@
+{
+  "Input": [
+    {
+      "ItemId": "*Deco_Mug_State_Filled_Water",
+      "Quantity": 1
+    }
+  ],
+  "PrimaryOutput": {
+    "ItemId": "Deco_Mug",
+    "Quantity": 1
+  },
+  "Output": [],
+  "BenchRequirement": [
+    {
+      "Type": "Processing",
+      "Id": "Well"
+    }
+  ],
+  "TimeSeconds": 1
+}

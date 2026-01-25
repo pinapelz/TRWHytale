@@ -1,7 +1,7 @@
 # TRWHytale
-A random plugin and collection of mods (modpack?) that are not useful.
+A random plugin and collection of mods (this a modpack?) that are not useful.
 
->You must compile this plugin on your own since config files are built into the JAR itself
+>You must compile this plugin on your own since some of the assets and configs for features are built into the JAR itself.
 >
 >This acts as a sort of small deterrent if anyone else has SFTP or management access to your server
 
@@ -10,7 +10,7 @@ A random plugin and collection of mods (modpack?) that are not useful.
 - `startup` and `shutdown` expect webhook JSON payloads
 
 ## Jumpscare your friends with an animated GIF
-1. Obtain some 13 frame GIF and convert it to PNG files
+1. Obtain some 13 frame GIF and convert it to PNG files of all the frames
 2. Add them to `src/main/resources/Common/UI/Custom/Common/TRW` and name it `frame_###.png` (i.e `frame_001.png`) up to 13
 3. Obtain some `.ogg` audio file and place it in `src/main/resources/Common/Sounds`, name it `twr.ogg`
 
@@ -19,10 +19,18 @@ A random plugin and collection of mods (modpack?) that are not useful.
 
 Heavily based off of: https://www.curseforge.com/hytale/mods/chance-for-withered-foxy-jumpscare-every-second
 
-# Mods
-The mods below need to be patched via the Python script. These can be mixed and matched, download the mod and place it into a `mods` folder in the root directory.
+## Ryozu's Water Well
+- Adds the water well mod
+- Changed namespace/item_id in case there is a conflict in the future
 
-Run `uv sync` to pull any potential dependencies.
+# Patched Mods
+The mods below need to be patched via the Python script due to non-open licenses. These can be mixed and matched accordingly. Ensure you have `uv` installed.
+
+1. Download the original mod and place it into a `mods` folder
+2. Run `uv sync` to install dependencies
+3. Run `uv run build_external_mods.py` while in this repo's root directory
+
+Generated patched mods will be in `mods/patched`
 
 ## [Ymmersive Melodies](https://www.curseforge.com/hytale/mods/ymmersive-melodies/download)
 - Removed the default serverside songs and added some "special" ones
@@ -35,3 +43,5 @@ Run `uv sync` to pull any potential dependencies.
 - Patches in correct audio files for Blue and Red Labubus
 - Make Labubus much more expensive to craft
 - Play annoying Labubu sound on craft
+
+## [Entity's Functional Water Well](https://www.curseforge.com/hytale/mods/entitys-functional-water-well)

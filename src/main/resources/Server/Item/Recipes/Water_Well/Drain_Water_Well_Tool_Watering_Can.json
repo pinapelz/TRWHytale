@@ -1,0 +1,22 @@
+{
+  "Input": [
+    {
+      "ItemId": "*Tool_Watering_Can_State_Filled_Water",
+      "Quantity": 1
+    }
+  ],
+  "PrimaryOutput": {
+    "ItemId": "Tool_Watering_Can",
+    "Quantity": 1
+  },
+  "Output": [
+
+  ],
+  "BenchRequirement": [
+    {
+      "Type": "Processing",
+      "Id": "Well"
+    }
+  ],
+  "TimeSeconds": 1
+}
