@@ -191,9 +191,9 @@ def epics_labubu_patch(zip_path: str):
     shutil.copyfile("patch_data/labubu_pets/Epics_LabubuEgg_Basic.json", os.path.join(labubu_recepie_path, "Epics_LabubuEgg_Basic.json"))
     shutil.copyfile("patch_data/labubu_pets/Epics_LabubuEgg_Ears.json", os.path.join(labubu_recepie_path, "Epics_LabubuEgg_Ears.json"))
     shutil.copyfile("patch_data/labubu_pets/Epics_LabubuEgg_NoEars.json", os.path.join(labubu_recepie_path, "Epics_LabubuEgg_NoEars.json"))
-    labubu_basic = load_json_file(os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuEars.json"))
+    labubu_basic = load_json_file(os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuBasic.json"))
     labubu_basic["AnimationSets"]["Idle"]["Animations"] = [{"Animation": "NPC/Intelligent/Kweebec_Sapling/Animations/LabubuIdle.blockyanim","Speed": 0.5, "SoundEventId": "SFX_Labubu_Alerted"}]
-    dump_json_file(labubu_basic, os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuEars.json"))
+    dump_json_file(labubu_basic, os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuBasic.json"))
     labubu_no_ears = load_json_file(os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuNoEars.json"))
     labubu_no_ears["AnimationSets"]["Idle"]["Animations"] = [{"Animation": "NPC/Intelligent/Kweebec_Sapling/Animations/LabubuIdle.blockyanim","Speed": 0.5, "SoundEventId": "SFX_Labubu_Alerted"}]
     dump_json_file(labubu_no_ears, os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuNoEars.json"))
