@@ -43,5 +43,3 @@ Generated patched mods will be in `mods/patched`
 - Patches in correct audio files for Blue and Red Labubus
 - Make Labubus much more expensive to craft
 - Play annoying Labubu sound on craft
-
-## [Entity's Functional Water Well](https://www.curseforge.com/hytale/mods/entitys-functional-water-well)
