@@ -30,6 +30,9 @@ def main():
         elif "SNIP3_FoodPack" in mod_file_name and mod_file_name.endswith(".zip"):
             print("Found SNIP3'S Food Pack -> Cleaning")
             patches.snip3_foodpack_apply_patch(mod_path)
+        elif "EpicsLabubuPets" in mod_file_name:
+            print("Found Labubu Mod, Making it expensive like the real stuff")
+            patches.epics_labubu_patch(mod_path)
         else:
             print(f"[WARNING] {mod_file_name} not recognized")
 

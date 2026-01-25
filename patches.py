@@ -27,6 +27,66 @@ def dump_json_file(data, path: str):
         json.dump(data, f, indent=2, ensure_ascii=False)
     os.replace(tmp_path, path)
 
+def create_temp_dir_for_modification(src_zip_path: str, paths: set = None, mode: str = 'keep'):
+    temp_zip_path = src_zip_path + '.tmp'
+    norm_paths = None
+    if paths:
+        norm_paths = set()
+        for p in paths:
+            np = p.replace(os.path.sep, '/')
+            if np.startswith('./'):
+                np = np[2:]
+            norm_paths.add(np)
+    with zipfile.ZipFile(src_zip_path, 'r') as src_zip:
+        with zipfile.ZipFile(temp_zip_path, 'w') as dst_zip:
+            for member in src_zip.namelist():
+                if member.endswith('/'):
+                    continue
+                include = True
+                if mode == 'keep':
+                    if norm_paths:
+                        include = member in norm_paths
+                elif mode == 'remove':
+                    if norm_paths and member in norm_paths:
+                        include = False
+                else:
+                    include = True
+
+                if not include:
+                    continue
+                try:
+                    info = src_zip.getinfo(member)
+                    data = src_zip.read(member)
+                    info.filename = member
+                    dst_zip.writestr(info, data)
+                except KeyError:
+                    dst_zip.writestr(member, src_zip.read(member))
+
+    temp_dir = tempfile.mkdtemp()
+    with zipfile.ZipFile(temp_zip_path, 'r') as z:
+        z.extractall(temp_dir)
+    return temp_dir, temp_zip_path
+
+def rezip_temp_dir_into_patched(orig_zip_path: str, temp_dir_path: str):
+    dirn = os.path.dirname(orig_zip_path)
+    base = os.path.splitext(os.path.basename(orig_zip_path))[0]
+    if dirn:
+        new_path = os.path.join(dirn, 'patched', f"{base}-trw.zip")
+    else:
+        new_path = os.path.join('patched', f"{base}-trw.zip")
+    parent = os.path.dirname(new_path)
+    if parent and not os.path.exists(parent):
+        os.makedirs(parent, exist_ok=True)
+    with zipfile.ZipFile(new_path, 'w', compression=zipfile.ZIP_DEFLATED) as out_zip:
+        for root, _, files in os.walk(temp_dir_path):
+            for fname in files:
+                full_path = os.path.join(root, fname)
+                rel_path = os.path.relpath(full_path, temp_dir_path)
+                arcname = rel_path.replace(os.path.sep, '/')
+                out_zip.write(full_path, arcname)
+    return new_path
+
+
 def ymmersive_melodies_patch_new_default_songs(jar_path: str):
     src_dir = os.path.join('patch_data', 'ymmersive_melodies')
     with zipfile.ZipFile(jar_path, 'r') as jar:
@@ -67,24 +127,11 @@ def snip3_foodpack_apply_patch(zip_path: str):
     for prefix, names in prefixes.items():
         for name in names:
             keep_paths.add(prefix + name)
-    temp_zip_path = zip_path + '.tmp'
-    with zipfile.ZipFile(zip_path, 'r') as src_zip:
-        with zipfile.ZipFile(temp_zip_path, 'w') as dst_zip:
-            for member in src_zip.namelist():
-                if member.endswith('/'):
-                    continue
-                if member in keep_paths:
-                    try:
-                        info = src_zip.getinfo(member)
-                        data = src_zip.read(member)
-                        info.filename = member
-                        dst_zip.writestr(info, data)
-                    except KeyError:
-                        dst_zip.writestr(member, src_zip.read(member))
-    temp_dir = tempfile.mkdtemp()
+
+    temp_dir = None
+    temp_zip_path = None
     try:
-        with zipfile.ZipFile(temp_zip_path, 'r') as z:
-            z.extractall(temp_dir)
+        temp_dir, temp_zip_path = create_temp_dir_for_modification(zip_path, keep_paths, mode="keep")
 
         carbonara_path = os.path.join(temp_dir, "Common", "Items", "Consumables", "Food", "Carbonara.png")
         spaghetti_path = os.path.join(temp_dir, "Common", "Items", "Consumables", "Food", "Spaghetti.png")
@@ -124,24 +171,40 @@ def snip3_foodpack_apply_patch(zip_path: str):
                     os.rmdir(languages_dir)
                 except OSError:
                     pass
-        dirn = os.path.dirname(zip_path)
-        base = os.path.splitext(os.path.basename(zip_path))[0]
-        new_name = "patched/" + base + '-trw.zip'
-        new_path = os.path.join(dirn, new_name) if dirn else new_name
-        with zipfile.ZipFile(new_path, 'w', compression=zipfile.ZIP_DEFLATED) as out_zip:
-            for root, _, files in os.walk(temp_dir):
-                for fname in files:
-                    full_path = os.path.join(root, fname)
-                    rel_path = os.path.relpath(full_path, temp_dir)
-                    arcname = rel_path.replace(os.path.sep, '/')
-                    out_zip.write(full_path, arcname)
+
+        rezip_temp_dir_into_patched(zip_path, temp_dir)
     finally:
         try:
-            if os.path.exists(temp_zip_path):
+            if temp_zip_path and os.path.exists(temp_zip_path):
                 os.remove(temp_zip_path)
         except OSError:
             pass
         try:
-            shutil.rmtree(temp_dir)
+            if temp_dir:
+                shutil.rmtree(temp_dir)
         except OSError:
             pass
+
+def epics_labubu_patch(zip_path: str):
+    temp_dir, temp_zip_path = create_temp_dir_for_modification(zip_path)
+    labubu_recepie_path = os.path.join(temp_dir, "Server","Item","Items","EggSpawner")
+    shutil.copyfile("patch_data/labubu_pets/Epics_LabubuEgg_Basic.json", os.path.join(labubu_recepie_path, "Epics_LabubuEgg_Basic.json"))
+    shutil.copyfile("patch_data/labubu_pets/Epics_LabubuEgg_Ears.json", os.path.join(labubu_recepie_path, "Epics_LabubuEgg_Ears.json"))
+    shutil.copyfile("patch_data/labubu_pets/Epics_LabubuEgg_NoEars.json", os.path.join(labubu_recepie_path, "Epics_LabubuEgg_NoEars.json"))
+    labubu_basic = load_json_file(os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuEars.json"))
+    labubu_basic["AnimationSets"]["Idle"]["Animations"] = [{"Animation": "NPC/Intelligent/Kweebec_Sapling/Animations/LabubuIdle.blockyanim","Speed": 0.5, "SoundEventId": "SFX_Labubu_Alerted"}]
+    dump_json_file(labubu_basic, os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuEars.json"))
+    labubu_no_ears = load_json_file(os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuNoEars.json"))
+    labubu_no_ears["AnimationSets"]["Idle"]["Animations"] = [{"Animation": "NPC/Intelligent/Kweebec_Sapling/Animations/LabubuIdle.blockyanim","Speed": 0.5, "SoundEventId": "SFX_Labubu_Alerted"}]
+    dump_json_file(labubu_no_ears, os.path.join(temp_dir, 'Server', "Models", "Intelligent", "Kweebec", "LabubuNoEars.json"))
+    rezip_temp_dir_into_patched(zip_path, temp_dir)
+    try:
+        if temp_zip_path and os.path.exists(temp_zip_path):
+            os.remove(temp_zip_path)
+    except OSError:
+        pass
+    try:
+        if temp_dir:
+            shutil.rmtree(temp_dir)
+    except OSError:
+        pass

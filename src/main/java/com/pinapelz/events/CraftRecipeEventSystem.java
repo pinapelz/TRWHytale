@@ -29,6 +29,9 @@ public class CraftRecipeEventSystem extends EntityEventSystem<EntityStore, Post>
             if(recipeId.startsWith("Food_Pasta_Spaghetti_Recipe")){
                 SoundHelper.playSound(playerRef, "SFX_TRWPasta", SoundCategory.UI, 0.8f, 1.0f);
             }
+            else if(recipeId.startsWith("Epics_LabubuEgg")){
+                SoundHelper.playSound(playerRef, "SFX_Labubu_Alerted", SoundCategory.UI, 1.0f, 1.0f);
+            }
             System.out.println("Crafted recipe: " + recipeId + " by player: " + (playerRef != null ? playerRef.getUsername() : "Unknown"));
         }
     }
