@@ -9,38 +9,42 @@ import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 public class PlayerData implements Component<EntityStore> {
 
-    private long UISoundCooldown;
+    private long money;
 
     public static final BuilderCodec<PlayerData> CODEC =
             BuilderCodec.builder(PlayerData.class, PlayerData::new)
-                    .addField(new KeyedCodec<>("UISoundCooldown", Codec.LONG),
-                            (data, value) -> data.UISoundCooldown = value, // setter
-                            data -> data.UISoundCooldown) // getter
+                    .addField(new KeyedCodec<>("TRWMoney", Codec.LONG),
+                            (data, value) -> data.money = value, // setter
+                            data -> data.money) // getter
                     .build();
 
 
     public PlayerData() {
-        this.UISoundCooldown = 0;
+        this.money = 0;
     }
 
     public PlayerData(PlayerData clone) {
-        this.UISoundCooldown = clone.UISoundCooldown;   // constructor
-        ;
+        this.money = clone.money;   // constructor
     }
 
-    public void setNewUISoundCooldown(long cooldownTime) {
-        this.UISoundCooldown = System.currentTimeMillis() + cooldownTime;
+    public long getMoney() {
+        return money;
     }
 
-    public boolean isUISoundCooldown() {
-        long currentTime = System.currentTimeMillis();
-        if(currentTime < UISoundCooldown){
+    public void setMoney(long money) {
+        this.money = money;
+    }
+
+    public void addMoney(long amount) {
+        this.money += amount;
+    }
+
+    public boolean deductMoney(long amount) {
+        if (this.money >= amount) {
+            this.money -= amount;
             return true;
         }
-        else{
-            UISoundCooldown = 0;
-            return false;
-        }
+        return false;
     }
 
     @NullableDecl
