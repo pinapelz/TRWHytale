@@ -29,4 +29,9 @@ Run `uv sync` to pull any potential dependencies.
 
 ## [SNIP3'S Food Pack](https://www.curseforge.com/hytale/mods/snip3s-food-pack)
 - Removed some of the food items, kept fries and pizza
-- Remap pastas into Spaghetti, and buffed effects. Added on-craft event noise
+- Removed all pastas, there is now only Spaghetti (with higher T4 health/stamina regen + insta-health). Added on-craft event noise
+
+## [Epic's Labubu Pets](https://www.curseforge.com/hytale/mods/epics-labubu-pets)
+- Patches in correct audio files for Blue and Red Labubus
+- Make Labubus much more expensive to craft
+- Play annoying Labubu sound on craft
