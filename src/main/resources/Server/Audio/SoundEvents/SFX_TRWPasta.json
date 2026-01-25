@@ -11,6 +11,7 @@
       }
     }
   ],
+  "MaxInstance": 1,
   "Volume": 0,
   "Pitch": 0,
   "AudioCategory": "AudioCat_Inventory"
