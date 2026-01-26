@@ -211,8 +211,8 @@ def epics_labubu_patch(zip_path: str):
 
 def ryozu_well_water(zip_path: str):
     temp_dir, temp_zip_path = create_temp_dir_for_modification(zip_path)
-    old_rel = os.path.join('Server', 'Items', 'water_well.json')
-    new_rel = os.path.join('Server', 'Items', 'Ryozu_Water_Well.json')
+    old_rel = os.path.join('Server', 'Item', 'Items','water_well.json')
+    new_rel = os.path.join('Server', 'Item', 'Items', 'Ryozu_Water_Well.json')
     old_path = os.path.join(temp_dir, old_rel)
     new_path = os.path.join(temp_dir, new_rel)
     if os.path.exists(old_path):
