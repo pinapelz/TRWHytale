@@ -19,9 +19,8 @@ A random plugin and collection of mods (this a modpack?) that are not useful.
 
 Heavily based off of: https://www.curseforge.com/hytale/mods/chance-for-withered-foxy-jumpscare-every-second
 
-## Ryozu's Water Well
-- Adds the water well mod
-- Changed namespace/item_id in case there is a conflict in the future
+## Economy
+- The `$TRW` virtual currency. All data is stored via ECS
 
 # Patched Mods
 The mods below need to be patched via the Python script due to non-open licenses. These can be mixed and matched accordingly. Ensure you have `uv` installed.
@@ -43,3 +42,6 @@ Generated patched mods will be in `mods/patched`
 - Patches in correct audio files for Blue and Red Labubus
 - Make Labubus much more expensive to craft
 - Play annoying Labubu sound on craft
+
+## [Ryozu's Water Well](https://www.curseforge.com/hytale/mods/well-water)
+- Changed namespace/item_id in case there is a conflict in the future

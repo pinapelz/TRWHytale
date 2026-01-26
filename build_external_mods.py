@@ -25,14 +25,17 @@ def main():
         if "trw" in mod_file_name:
             continue
         if "ymmersive-melodies" in mod_file_name:
-            print("Found ymmersive-melodies mod -> Swapping default songs")
+            print("[PATCHER] Found ymmersive-melodies mod -> Swapping default songs")
             patches.ymmersive_melodies_patch_new_default_songs(mod_path)
         elif "SNIP3_FoodPack" in mod_file_name and mod_file_name.endswith(".zip"):
-            print("Found SNIP3'S Food Pack -> Cleaning")
+            print("Found SNIP3'S Food Pack -> Cleaning + Generating Spaghetti")
             patches.snip3_foodpack_apply_patch(mod_path)
         elif "EpicsLabubuPets" in mod_file_name:
             print("Found Labubu Mod, Making it expensive like the real stuff")
             patches.epics_labubu_patch(mod_path)
+        elif mod_file_name.startswith("Wellwater"):
+            print("Found Ryozu's Water Well Mod. Moving ItemId")
+            patches.ryozu_well_water(mod_path)
         else:
             print(f"[WARNING] {mod_file_name} not recognized")
 
