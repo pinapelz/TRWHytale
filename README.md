@@ -1,13 +1,13 @@
 # TRWHytale
-A random plugin and collection of mods (this a modpack?) that are not useful.
+A random plugin and collection of mods (this a modpack?) that are largely not useful for anyone else. The only reason a README exists is because I will inevitably forget stuff.
 
 >You must compile this plugin on your own since some of the assets and configs for features are built into the JAR itself.
 >
->This acts as a sort of small deterrent if anyone else has SFTP or management access to your server
+>This acts as a sort of small deterrent if anyone else has SFTP or management access to your server. Also some resources used are under proprietary.
 
 ## Send payload to Discord Webhook on server startup and sever shutdown
-- Expects resources/discord/discord.json -> Template is provided
-- `startup` and `shutdown` expect webhook JSON payloads
+- Expects resources/discord/discord.json -> Template is provided (`discord.template.json`)
+- All keys are expected to be proper Discord webhook payloads. Double curly braces `{{}}` indicate templated replacement.
 
 ## Jumpscare your friends with an animated GIF
 1. Obtain some 13 frame GIF and convert it to PNG files of all the frames
@@ -23,7 +23,7 @@ Heavily based off of: https://www.curseforge.com/hytale/mods/chance-for-withered
 - The `$TRW` virtual currency. All data is stored via ECS
 
 # Patched Mods
-The mods below need to be patched via the Python script due to non-open licenses. These can be mixed and matched accordingly. Ensure you have `uv` installed.
+The mods below need to be patched via the Python script due to proprietary licenses. These can be mixed and matched accordingly, you may even choose to not use any. Ensure you have `uv` installed.
 
 1. Download the original mod and place it into a `mods` folder
 2. Run `uv sync` to install dependencies
