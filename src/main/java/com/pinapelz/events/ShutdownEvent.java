@@ -11,7 +11,7 @@ public final class ShutdownEvent {
 
     private static final AtomicBoolean fired = new AtomicBoolean(false);
 
-    public static void onShutdown() {
+    public static void onShutdown(com.hypixel.hytale.server.core.event.events.ShutdownEvent event) {
         if (!fired.compareAndSet(false, true)) {
             return;
         }

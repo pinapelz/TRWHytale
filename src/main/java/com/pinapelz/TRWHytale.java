@@ -62,14 +62,10 @@ public class TRWHytale extends JavaPlugin {
                 AllWorldsLoadedEvent.class,
                 StartUpEvent::onServerReady
         );
+        this.getEventRegistry().registerGlobal(com.hypixel.hytale.server.core.event.events.ShutdownEvent.class, ShutdownEvent::onShutdown);
         this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, PlayerJoinEvent::onPlayerJoin);
         this.getEventRegistry().registerGlobal(PlayerDisconnectEvent.class, PlayerLeaveEvent::onPlayerLeave);
 
-    }
-
-    @Override
-    public void shutdown() {
-        ShutdownEvent.onShutdown();
     }
 
     public ComponentType<EntityStore, PlayerData> getPlayerDataComponent() {
