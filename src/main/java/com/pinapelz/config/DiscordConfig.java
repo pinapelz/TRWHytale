@@ -30,10 +30,11 @@ public class DiscordConfig {
 
         public EventConfig() {}
 
-        public EventConfig(String title, String message, String thumbnail, int color, String customWebhook, Boolean enabled) {
+        public EventConfig(String title, String message, String thumbnail, String image, int color, String customWebhook, Boolean enabled) {
             this.title = title;
             this.message = message;
             this.thumbnail = thumbnail;
+            this.image = image;
             this.color = color;
             this.customWebhook = customWebhook;
             this.enabled = enabled;
@@ -50,14 +51,14 @@ public class DiscordConfig {
             }, i2 -> (i2).events).add()
             .build();
 
-    protected String webhook = "";
-    protected Map<String, EventConfig> events = new HashMap<>();
+    public String webhook = "";
+    public Map<String, EventConfig> events = new HashMap<>();
 
     public DiscordConfig() {
-        events.put("OnPlayerJoin", new EventConfig("Player Joined", "{player} has joined the server", "", 3066993, "", true));
-        events.put("OnPlayerLeft", new EventConfig("Player left", "{player} has left the server", "", 15105570, "", true));
-        events.put("OnPlayerChat", new EventConfig("Chat Message", "{sender}: {message}", "", 3447003, "", true));
-        events.put("OnServerStart", new EventConfig("Server Started", "The server is started", "", 3447003, "", true));
-        events.put("OnServerStop", new EventConfig("Server Stopped", "The server is shutdown", "", 15548997, "", true));
+        events.put("OnPlayerJoin", new EventConfig("Player Joined", "{player} has joined the server", "", "", 3066993, "", true));
+        events.put("OnPlayerLeft", new EventConfig("Player left", "{player} has left the server", "", "", 15105570, "", true));
+        events.put("OnPlayerChat", new EventConfig("Chat Message", "{sender}: {message}", "", "", 3447003, "", true));
+        events.put("OnServerStart", new EventConfig("Server Started", "The server is started", "", "", 3447003, "", true));
+        events.put("OnServerStop", new EventConfig("Server Stopped", "The server is shutdown", "", "", 15548997, "", true));
     }
 }

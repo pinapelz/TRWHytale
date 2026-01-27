@@ -1,4 +1,4 @@
-package com.pinapelz;
+package com.pinapelz.packets;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;

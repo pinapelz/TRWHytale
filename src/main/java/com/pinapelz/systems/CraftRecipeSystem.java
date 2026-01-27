@@ -1,4 +1,4 @@
-package com.pinapelz.events;
+package com.pinapelz.systems;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
 import com.hypixel.hytale.component.CommandBuffer;
@@ -7,17 +7,14 @@ import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.EntityEventSystem;
 import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.hypixel.hytale.server.core.universe.Universe;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import javax.annotation.Nullable;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.server.core.event.events.ecs.CraftRecipeEvent.Post;
-import com.pinapelz.TRWHytale;
-import com.pinapelz.components.PlayerData;
 import com.pinapelz.util.SoundHelper;
 
-public class CraftRecipeEventSystem extends EntityEventSystem<EntityStore, Post> {
-    public CraftRecipeEventSystem() {
+public class CraftRecipeSystem extends EntityEventSystem<EntityStore, Post> {
+    public CraftRecipeSystem() {
         super(Post.class);
     }
 
