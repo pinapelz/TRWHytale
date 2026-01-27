@@ -38,9 +38,7 @@ build/
 ### Mac OS ###
 .DS_Store
 src/main/resources/discord/discord.json
-frame_*.png
 discord.json
-trw.ogg
 mods
 # Byte-compiled / optimized / DLL files
 __pycache__/

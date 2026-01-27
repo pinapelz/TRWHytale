@@ -1,14 +1,14 @@
 # TRWHytale
 A random plugin and collection of mods (this a modpack?) that are largely not useful for anyone else. The only reason a README exists is because I will inevitably forget stuff.
 
->You must compile this plugin on your own since some of the assets and configs for features are built into the JAR itself.
->
->This acts as a sort of small deterrent if anyone else has SFTP or management access to your server. Also some resources used are under proprietary.
+Instructions below are provided for how to edit some things, although theres a default config/asset for everything already.
 
-## Send payload to Discord Webhook on server startup and sever shutdown
-- Expects resources/discord/discord.json -> Template is provided (`discord.template.json`)
-- All keys are expected to be proper Discord webhook payloads. Double curly braces `{{}}` indicate templated replacement.
+## Send payload to Discord Webhook on events
+- Startup, Shutdown, Player Join, Player Leave
+- Config in `com.pinapelz_TRW-Hytale/TRWDiscordConfig.json`
+- All keys are expected to be proper Discord webhook payloads. Double curly braces `{}` indicates templated replacement
 
+Mostly taken from Hycord
 ## Jumpscare your friends with an animated GIF
 1. Obtain some 13 frame GIF and convert it to PNG files of all the frames
 2. Add them to `src/main/resources/Common/UI/Custom/Common/TRW` and name it `frame_###.png` (i.e `frame_001.png`) up to 13
@@ -18,6 +18,7 @@ A random plugin and collection of mods (this a modpack?) that are largely not us
 - The jumpscare has a 1 in 100 chance to occur when holding a tool and sending an interaction packet (even if interacting with nothing)
 
 Heavily based off of: https://www.curseforge.com/hytale/mods/chance-for-withered-foxy-jumpscare-every-second
+Default: https://www.youtube.com/watch?v=eIaMJVO0HUw + that one Wonhee clip
 
 ## Economy
 - The `$TRW` virtual currency. All data is stored via ECS
@@ -36,7 +37,8 @@ Generated patched mods will be in `mods/patched`
 
 ## [SNIP3'S Food Pack](https://www.curseforge.com/hytale/mods/snip3s-food-pack)
 - Removed some of the food items, kept fries and pizza
-- Removed all pastas, there is now only Spaghetti (with higher T4 health/stamina regen + insta-health). Added on-craft event noise
+- Removed all pastas, there is now only Spaghetti (with higher T4 health/stamina regen + insta-health). Soundbyte from Spaghetti - LE SSERAFIM
+- 
 
 ## [Epic's Labubu Pets](https://www.curseforge.com/hytale/mods/epics-labubu-pets)
 - Patches in correct audio files for Blue and Red Labubus
