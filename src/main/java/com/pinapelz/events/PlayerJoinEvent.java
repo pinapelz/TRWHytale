@@ -12,6 +12,10 @@ public final class PlayerJoinEvent {
     public static void onPlayerJoin(PlayerReadyEvent event) {
         try {
             Player player = event.getPlayer();
+            if(TRWHytale.currentPlayers.contains(player.getDisplayName())){
+                return;
+            }
+            TRWHytale.currentPlayers.add(player.getDisplayName());
             DiscordConfig.EventConfig eventConfig = TRWHytale.discordConfig.get().events.get("OnPlayerJoin");
             if (!eventConfig.enabled) return;
             String webhook = "";

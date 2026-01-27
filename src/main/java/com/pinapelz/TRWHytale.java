@@ -21,16 +21,20 @@ import com.pinapelz.events.StartUpEvent;
 import com.pinapelz.packets.PacketListener;
 
 import javax.annotation.Nonnull;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TRWHytale extends JavaPlugin {
     public static TRWHytale INSTANCE;
     public static Config<DiscordConfig> discordConfig;
+    public static Set<String>  currentPlayers;
     public ComponentType<EntityStore, PlayerData> playerDataComponent;
 
 
     public TRWHytale(@Nonnull JavaPluginInit init) {
         super(init);
         discordConfig = withConfig("TRWDiscordConfig", DiscordConfig.CODEC);
+        currentPlayers = new HashSet<String>();
         INSTANCE = this;
     }
 

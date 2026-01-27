@@ -16,6 +16,7 @@ public final class PlayerLeaveEvent {
                 return;
             }
             String username = event.getPlayerRef().getUsername();
+            TRWHytale.currentPlayers.remove(username);
             DiscordConfig.EventConfig eventConfig = TRWHytale.discordConfig.get().events.get("OnPlayerLeft");
             if (!eventConfig.enabled) return;
             String webhook = "";
