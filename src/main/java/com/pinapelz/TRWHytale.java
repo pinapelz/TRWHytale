@@ -1,6 +1,7 @@
 package com.pinapelz;
 
 import com.hypixel.hytale.component.ComponentType;
+import com.hypixel.hytale.server.core.event.events.player.PlayerChatEvent;
 import com.hypixel.hytale.server.core.event.events.player.PlayerDisconnectEvent;
 import com.hypixel.hytale.server.core.event.events.player.PlayerReadyEvent;
 import com.hypixel.hytale.server.core.io.adapter.PacketAdapters;
@@ -13,11 +14,8 @@ import com.hypixel.hytale.server.core.util.Config;
 import com.pinapelz.commands.*;
 import com.pinapelz.components.PlayerData;
 import com.pinapelz.config.DiscordConfig;
-import com.pinapelz.events.PlayerJoinEvent;
-import com.pinapelz.events.PlayerLeaveEvent;
+import com.pinapelz.events.*;
 import com.pinapelz.systems.CraftRecipeSystem;
-import com.pinapelz.events.ShutdownEvent;
-import com.pinapelz.events.StartUpEvent;
 import com.pinapelz.packets.PacketListener;
 
 import javax.annotation.Nonnull;
@@ -69,6 +67,7 @@ public class TRWHytale extends JavaPlugin {
         this.getEventRegistry().registerGlobal(com.hypixel.hytale.server.core.event.events.ShutdownEvent.class, ShutdownEvent::onShutdown);
         this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, PlayerJoinEvent::onPlayerJoin);
         this.getEventRegistry().registerGlobal(PlayerDisconnectEvent.class, PlayerLeaveEvent::onPlayerLeave);
+        this.getEventRegistry().registerGlobal(PlayerChatEvent.class, ChatEvent::onPlayerChatEvent);
 
     }
 
