@@ -16,7 +16,7 @@ public final class ShutdownEvent {
             return;
         }
         try {
-            DiscordConfig.EventConfig eventConfig = TRWHytale.discordConfig.get().events.get("OnServerShutdown");
+            DiscordConfig.EventConfig eventConfig = TRWHytale.discordConfig.get().events.get("OnServerStop");
             if (!eventConfig.enabled) return;
             String webhook = "";
             if (!Objects.equals(eventConfig.customWebhook, "")) {
