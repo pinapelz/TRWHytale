@@ -66,8 +66,8 @@ public class PayCommand extends CommandBase {
             PlayerData targetWallet = store.getStore().ensureAndGetComponent(finalTarget.getReference(), TRWHytale.INSTANCE.getPlayerDataComponent());
             if (senderWallet.deductMoney(amount)) {
                 targetWallet.addMoney(amount);
-                sender.sendMessage(Message.raw("Sent " + amount + " $TRW to " + finalTarget.getUsername()).color(Color.GREEN));
-                finalTarget.sendMessage(Message.raw("Received " + amount + " $TRW from " + sender.getDisplayName()).color(Color.GREEN));
+                sender.sendMessage(Message.raw("Sent " + amount + " $ILT Tokens to " + finalTarget.getUsername()).color(Color.GREEN));
+                finalTarget.sendMessage(Message.raw("Received " + amount + " $ILT Tokens from " + sender.getDisplayName()).color(Color.GREEN));
             } else {
                 sender.sendMessage(Message.raw("Insufficient funds.").color(Color.RED));
             }

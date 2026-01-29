@@ -22,7 +22,7 @@ Heavily based off of: https://www.curseforge.com/hytale/mods/chance-for-withered
 Default: https://www.youtube.com/watch?v=eIaMJVO0HUw + that one Wonhee clip
 
 ## Economy
-- The `$TRW` virtual currency. All data is stored via ECS
+- The `$ILT` token virtual currency. All data for this is stored via ECS
 
 # Other Mods
 There are some additional behaviors that work with other mods, some require their functionalities to be patched. You can do this by using the [patcher](https://github.com/pinapelz/TRWHytale-Mod-Patcher)

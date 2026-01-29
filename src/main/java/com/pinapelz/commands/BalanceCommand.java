@@ -17,7 +17,6 @@ public class BalanceCommand extends CommandBase {
 
     public BalanceCommand(String name, String description) {
         super(name, description);
-        this.addAliases("bal", "money", "wallet");
         this.setPermissionGroup(GameMode.Adventure);
     }
 
@@ -31,7 +30,7 @@ public class BalanceCommand extends CommandBase {
             EntityStore store = player.getWorld().getEntityStore();
             PlayerData wallet = store.getStore().ensureAndGetComponent(player.getReference(), TRWHytale.INSTANCE.getPlayerDataComponent());
             long balance = wallet.getMoney();
-            player.sendMessage(Message.raw("Your Balance: " + balance + " $TRW").color(Color.GREEN));
+            player.sendMessage(Message.raw("Your Balance: " + balance + " $ILT Tokens").color(Color.GREEN));
         }, player.getWorld());
     }
 }

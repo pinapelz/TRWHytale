@@ -59,13 +59,13 @@ public class EconomyAdminTRW extends CommandBase {
             PlayerData wallet = store.getStore().ensureAndGetComponent(finalTarget.getReference(), TRWHytale.INSTANCE.getPlayerDataComponent());
             if (action.equalsIgnoreCase("give")) {
                 wallet.addMoney(amount);
-                ctx.sendMessage(Message.raw("Gave " + amount + " $TRW to " + finalTarget.getUsername()).color(Color.GREEN));
+                ctx.sendMessage(Message.raw("Gave " + amount + " $ILT to " + finalTarget.getUsername()).color(Color.GREEN));
             } else if (action.equalsIgnoreCase("take")) {
                 wallet.deductMoney(amount);
-                ctx.sendMessage(Message.raw("Took " + amount + " $TRW from " + finalTarget.getUsername()).color(Color.GREEN));
+                ctx.sendMessage(Message.raw("Took " + amount + " $ILT from " + finalTarget.getUsername()).color(Color.GREEN));
             } else if (action.equalsIgnoreCase("set")) {
                 wallet.setMoney(amount);
-                ctx.sendMessage(Message.raw("Set " + finalTarget.getUsername() + " balance to " + amount + " $TRW.").color(Color.GREEN));
+                ctx.sendMessage(Message.raw("Set " + finalTarget.getUsername() + " balance to " + amount + " $ILT.").color(Color.GREEN));
             } else {
                 ctx.sendMessage(Message.raw("Unknown action: " + action).color(Color.RED));
             }

@@ -51,8 +51,8 @@ public class TRWHytale extends JavaPlugin {
         this.getCommandRegistry().registerCommand(new PingTRW("trw", "TRW Version and Info"));
         this.getCommandRegistry().registerCommand(new AppearTRW("trw-appear", "Send a jumpscare to someone"));
         this.getCommandRegistry().registerCommand(new EconomyAdminTRW("trw-ecoadmin", "Admin commands to manage the TRW economy"));
-        this.getCommandRegistry().registerCommand(new BalanceCommand("trw-balance", "Check your $TRW balance"));
-        this.getCommandRegistry().registerCommand(new PayCommand("trw-pay", "Pay another player $TRW"));
+        this.getCommandRegistry().registerCommand(new BalanceCommand("trw-balance", "Check your $ILT balance"));
+        this.getCommandRegistry().registerCommand(new PayCommand("trw-pay", "Pay another player $ILT"));
         this.getEventRegistry().register(
                 AllWorldsLoadedEvent.class,
                 StartUpEvent::onServerReady
