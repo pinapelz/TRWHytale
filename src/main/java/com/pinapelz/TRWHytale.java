@@ -5,6 +5,7 @@ import com.hypixel.hytale.server.core.event.events.player.PlayerChatEvent;
 import com.hypixel.hytale.server.core.event.events.player.PlayerDisconnectEvent;
 import com.hypixel.hytale.server.core.event.events.player.PlayerReadyEvent;
 import com.hypixel.hytale.server.core.io.adapter.PacketAdapters;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.world.World;
@@ -15,6 +16,7 @@ import com.pinapelz.commands.*;
 import com.pinapelz.components.PlayerData;
 import com.pinapelz.config.DiscordConfig;
 import com.pinapelz.events.*;
+import com.pinapelz.interactions.ATMInteraction;
 import com.pinapelz.systems.CraftRecipeSystem;
 import com.pinapelz.packets.PacketListener;
 
@@ -68,6 +70,7 @@ public class TRWHytale extends JavaPlugin {
         this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, PlayerJoinEvent::onPlayerJoin);
         this.getEventRegistry().registerGlobal(PlayerDisconnectEvent.class, PlayerLeaveEvent::onPlayerLeave);
         this.getEventRegistry().registerGlobal(PlayerChatEvent.class, ChatEvent::onPlayerChatEvent);
+        this.getCodecRegistry(Interaction.CODEC).register("TRWEcotaleAtmInteraction", ATMInteraction.class, ATMInteraction.CODEC);
 
     }
 

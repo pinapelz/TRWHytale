@@ -21,6 +21,13 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/HytaleServer.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId> com.ecotalecoins</groupId>
+            <artifactId>ecotale-coins</artifactId>
+            <version>1.1.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/EcotaleCoins-1.1.2.jar</systemPath>
+        </dependency>
         <!-- Source: https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
