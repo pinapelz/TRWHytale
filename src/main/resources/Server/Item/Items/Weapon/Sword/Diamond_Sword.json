@@ -128,8 +128,8 @@
   "Recipe": {
     "Input": [
       {
-        "ItemId": "Ore_Diamond_Overworld",
-        "Quantity": 15
+        "ItemId": "Rock_Gem_Diamond",
+        "Quantity": 100
       },
       {
         "ItemId": "Ingredient_Stick",
