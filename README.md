@@ -3,11 +3,10 @@ A random plugin that does a bunch of stuff that are largely not useful for anyon
 
 Instructions below are provided for how to edit some things, although there's a default config/asset for everything already.
 
-## Send payload to Discord Webhook on events
+## Send payload to a Matrix Channel
 - Startup, Shutdown, Player Join, Player Leave
-- Config in `com.pinapelz_TRW-Hytale/TRWDiscordConfig.json`
-- All keys are expected to be proper Discord webhook payloads. Double curly braces `{}` indicates templated replacement
-- Logic mostly taken from Hycord
+- Config in `com.pinapelz_TRW-Hytale/TRWMatrixConfig.json`
+- Images/Thumbnails are not supported due to limitations of the Teamspeak 6 vanilla groupchat feature (can be fixed w/ plugin)
 
 ## Jumpscare your friends with an animated GIF
 1. Obtain some 13 frame GIF and convert it to PNG files of all the frames

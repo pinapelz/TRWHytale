@@ -14,7 +14,7 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.util.Config;
 import com.pinapelz.commands.*;
 import com.pinapelz.components.PlayerData;
-import com.pinapelz.config.DiscordConfig;
+import com.pinapelz.config.MatrixConfig;
 import com.pinapelz.events.*;
 import com.pinapelz.interactions.ATMInteraction;
 import com.pinapelz.systems.CraftRecipeSystem;
@@ -26,14 +26,14 @@ import java.util.Set;
 
 public class TRWHytale extends JavaPlugin {
     public static TRWHytale INSTANCE;
-    public static Config<DiscordConfig> discordConfig;
+    public static Config<MatrixConfig> matrixConfig;
     public static Set<String>  currentPlayers;
     public ComponentType<EntityStore, PlayerData> playerDataComponent;
 
 
     public TRWHytale(@Nonnull JavaPluginInit init) {
         super(init);
-        discordConfig = withConfig("TRWDiscordConfig", DiscordConfig.CODEC);
+        matrixConfig = withConfig("TRWMatrixConfig", MatrixConfig.CODEC);
         currentPlayers = new HashSet<String>();
         INSTANCE = this;
     }
@@ -49,7 +49,7 @@ public class TRWHytale extends JavaPlugin {
 
     @Override
     public void setup() {
-        discordConfig.save();
+        matrixConfig.save();
         this.getCommandRegistry().registerCommand(new PingTRW("trw", "TRW Version and Info"));
         this.getCommandRegistry().registerCommand(new AppearTRW("trw-appear", "Send a jumpscare to someone"));
         this.getCommandRegistry().registerCommand(new EconomyAdminTRW("trw-ecoadmin", "Admin commands to manage the TRW economy"));
@@ -71,7 +71,12 @@ public class TRWHytale extends JavaPlugin {
         this.getEventRegistry().registerGlobal(PlayerReadyEvent.class, PlayerJoinEvent::onPlayerJoin);
         this.getEventRegistry().registerGlobal(PlayerDisconnectEvent.class, PlayerLeaveEvent::onPlayerLeave);
         this.getEventRegistry().registerGlobal(PlayerChatEvent.class, ChatEvent::onPlayerChatEvent);
-        this.getCodecRegistry(Interaction.CODEC).register("TRWEcotaleAtmInteraction", ATMInteraction.class, ATMInteraction.CODEC);
+        try {
+            Class.forName("com.ecotalecoins.gui.BankGui");
+            this.getCodecRegistry(Interaction.CODEC).register("TRWEcotaleAtmInteraction", ATMInteraction.class, ATMInteraction.CODEC);
+        } catch (ClassNotFoundException e) {
+            System.out.println("EcotaleCoins not found, skipping ATM interaction registration");
+        }
 
     }
 
