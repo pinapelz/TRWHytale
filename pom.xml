@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.hypixel.hytale</groupId>
             <artifactId>hytale-server</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/HytaleServer.jar</systemPath>
         </dependency>
